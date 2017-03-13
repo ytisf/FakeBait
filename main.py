@@ -211,6 +211,9 @@ def NetworkTest():
 def EicarTest():
     sys.stdout.write("Starting EICAR test.\n")
     eicarData = _fetchURL(url=EICAR_URL)
+    if eicarData is False:
+        sys.stderr.write("No internet connection to get EICAR file.\n")
+        return [0,0,0]
     detection = 0
     evasion = 0
 
