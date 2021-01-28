@@ -13,14 +13,14 @@ import urllib2
 import datetime
 
 # PATHS
-OUTPUT_DIR = "output"
-DATA_DIR = "testData"
-TEMP_DIR = "tempDir"
-MALWARES_URL_FILE = DATA_DIR + "/" + "malwareURLs.csv"
-NETWORK_LOGPAGE = OUTPUT_DIR + "/" + "network.log"
+OUTPUT_DIR              = "output"
+DATA_DIR                = "testData"
+TEMP_DIR                = "tempDir"
+MALWARES_URL_FILE       = DATA_DIR + "/" + "malwareURLs.csv"
+NETWORK_LOGPAGE         = OUTPUT_DIR + "/" + "network.log"
 NETWORK_VERBOSE_LOGPAGE = OUTPUT_DIR + "/" + "network_verbose.log"
-EICAR_FILE_TEST = OUTPUT_DIR + "/" + "eicar.log"
-MALWARE_REPORT_FILE = OUTPUT_DIR + "/" + "malware.log"
+EICAR_FILE_TEST         = OUTPUT_DIR + "/" + "eicar.log"
+MALWARE_REPORT_FILE     = OUTPUT_DIR + "/" + "malware.log"
 
 # Malwares
 MALWARES = [
@@ -41,11 +41,11 @@ MALWARES = [
 
 
 # URLS
-EICAR_URL = "http://www.eicar.org/download/eicar.com"
-complete_db =  "http://www.malwaredomainlist.com/mdlcsv.php" # Complete DB
-yesterday_db = "http://www.malwaredomainlist.com/hostslist/yesterday.php" # Yesterday's DB
-yesterday_urls = "http://www.malwaredomainlist.com/hostslist/yesterday_urls.php" # Only URLs from yesterday
-live_ips = "http://www.malwaredomainlist.com/hostslist/ip.txt" # Online LIVE IP list
+EICAR_URL       = "http://www.eicar.org/download/eicar.com"
+complete_db     =  "http://www.malwaredomainlist.com/mdlcsv.php" # Complete DB
+yesterday_db    = "http://www.malwaredomainlist.com/hostslist/yesterday.php" # Yesterday's DB
+yesterday_urls  = "http://www.malwaredomainlist.com/hostslist/yesterday_urls.php" # Only URLs from yesterday
+live_ips        = "http://www.malwaredomainlist.com/hostslist/ip.txt" # Online LIVE IP list
 
 # Configurations
 SCAN_TIMEOUT = 5 # 5 seconds until AV should pick it up
@@ -132,6 +132,7 @@ def _createZip(folder=OUTPUT_DIR):
 
 # START MAIN FUNCTIONS
 
+
 def logit(kind, title, desc, result):
     now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     if kind == "network-verbose":
@@ -151,6 +152,7 @@ def logit(kind, title, desc, result):
         f.write(now + ", " + title + ", " + desc + ", " + result + "\n")
         f.close()
     return True
+
 
 def NetworkTest():
     sys.stdout.write("Starting Malware Traffic Test.\n")
@@ -207,6 +209,7 @@ def NetworkTest():
 
     sys.stdout.write("Completed Malware Traffic Test.\n\n")
     return [len(malwareIndex), detection_counter, circumvented_counter]
+
 
 def EicarTest():
     sys.stdout.write("Starting EICAR test.\n")
@@ -290,6 +293,7 @@ def EicarTest():
         os.remove(fl)
     sys.stdout.write("Completed EICAR testing.\n\n")
     return [5, evasion, detection]
+
 
 def MalwareDeploymentTest():
     sys.stdout.write("Starting malware test.\n")
